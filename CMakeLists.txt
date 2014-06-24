@@ -82,6 +82,34 @@ cxx_library(gmock_main
             src/gmock-all.cc
             src/gmock_main.cc)
 
+
+########################################################################
+#
+# Setup and install *.pc files, headers and libraries
+
+set(PREFIX ${CMAKE_INSTALL_PREFIX})
+
+set(VERSION_MAJOR 0)
+set(VERSION "${VERSION_MAJOR}.0.1")
+
+configure_file(gmock.pc.in gmock.pc @ONLY)
+configure_file(gmock_main.pc.in gmock_main.pc @ONLY)
+
+set_target_properties(gmock PROPERTIES SOVERSION ${VERSION_MAJOR})
+set_target_properties(gmock PROPERTIES VERSION ${VERSION})
+
+set_target_properties(gmock_main PROPERTIES SOVERSION ${VERSION_MAJOR})
+set_target_properties(gmock_main PROPERTIES VERSION ${VERSION})
+
+install(TARGETS gmock DESTINATION ${LIB_INSTALL_DIR} COMPONENT RuntimeLibraries)
+install(TARGETS gmock_main DESTINATION ${LIB_INSTALL_DIR} COMPONENT RuntimeLibraries)
+
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION ${INCLUDE_INSTALL_DIR} FILES_MATCHING PATTERN "*.h" PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/gtest/include/ DESTINATION ${INCLUDE_INSTALL_DIR} FILES_MATCHING PATTERN "*.h" PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ)
+
+install(FILES ${PROJECT_SOURCE_DIR}/gmock.pc DESTINATION  ${LIB_INSTALL_DIR}/pkgconfig)
+install(FILES ${PROJECT_SOURCE_DIR}/gmock_main.pc DESTINATION  ${LIB_INSTALL_DIR}/pkgconfig)
+
 ########################################################################
 #
 # Google Mock's own tests.
