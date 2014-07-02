@@ -6,5 +6,5 @@ includedir=@INCLUDE_INSTALL_DIR@
 Name: gmock_main
 Description: C++ mocking framework
 Version: @PKG_VERSION@
-Libs: -L${libdir} -lgmock_main
+Libs: -L${libdir} -lgmock_main -lpthread
 Cflags: -I${includedir}/gmock -I${includedir}/gtest
