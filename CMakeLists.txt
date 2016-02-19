@@ -11,6 +11,8 @@ option(BUILD_GMOCK "Builds the googlemock subproject" ON)
 
 if(BUILD_GMOCK)
   add_subdirectory( googlemock )
+  add_subdirectory( pc )
 elseif(BUILD_GTEST)
   add_subdirectory( googletest )
 endif()
+
