@@ -3,7 +3,7 @@ Version:    1.7.0
 Release:    1
 Summary:    C++ mocking framework
 Group:      Development/Testing
-License:    BSD-3-Clause
+License:    BSD-2.0 and Apache-2.0
 Vendor:     Google Inc.
 URL:        https://code.google.com/p/googlemock/
 Source0:    %{name}-%{version}.tar.gz
@@ -38,6 +38,7 @@ make %{?jobs:-j%jobs}
 %postun -p /sbin/ldconfig
 
 %files
+%license LICENSE LICENSE.apache-2.0
 %{_libdir}/*.so.*
 %manifest %{name}.manifest
 
