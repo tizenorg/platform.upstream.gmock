@@ -38,7 +38,7 @@ make %{?jobs:-j%jobs}
 %postun -p /sbin/ldconfig
 
 %files
-%license LICENSE LICENSE.apache-2.0
+%license LICENSE LICENSE.Apache-2.0
 %{_libdir}/*.so.*
 %manifest %{name}.manifest
 
